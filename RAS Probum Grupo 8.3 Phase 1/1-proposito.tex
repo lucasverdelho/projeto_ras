@@ -1,0 +1,61 @@
+\chapter*{1. Propósito do Projeto}
+
+\section*{Contexto}
+
+
+
+% Crescente digitalização do ensino, nomeadamente pilotos em provas da escolaridade obrigatória portuguesa
+% Cursos com um número crecente de alunos inscritos, e UCs com várias provas de avaliação:
+% - Complexidade na gestão de espaços para as provas (as salas são insuficientes para o número de alunos, pelo que uma ajuda informática seria uma ajuda muito importante);
+% - Ineficiência na correção das provas (recursos e tempo);
+% - Despredicio de papel.
+
+{\TextoCor
+Nos últimos anos, tem-se assistido a uma crescente integração da tecnologia no ambiente educativo e esse fenómeno não passa despercebido no ensino superior. Com o objetivo de otimizar processos e melhorar a experiência de Alunos e Docentes, muitas organizações têm explorado a digitalização de várias atividades, incluindo a realização de provas de avaliação.
+
+Um exemplo interessante desta tendência é aquele que se observa em algumas provas de aferição do ensino básico português, que tentam explorar o potencial de transformação que as soluções digitais podem proporcionar.
+No entanto, aplicar no imediato estes métodos numa instituição de ensino superior levanta novos desafios, que estão essencialmente relacionados com as limitações das estruturas informáticas. O crescente número de Alunos inscritos em muitas unidades curriculares é também um obstáculo à aplicação desses métodos.
+Dentro desta realidade, destacam-se os seguintes desafios:
+
+\begin{itemize}
+\item \textbf{Gestão de espaços e recursos:} A realização de provas de avaliação para um grande número de Alunos coloca uma pressão significativa sobre os espaços disponíveis. As salas revelam-se muitas vezes insuficientes, resultando em desafios logísticos na calendarização e alocação destes espaços.
+
+\item \textbf{Eficiência na correção:} A correção manual de um grande número de provas é um processo demorado e sujeito a erros humanos. Fazê-la, especialmente em cursos com muitos Alunos, torna-se ineficiente e onerosa em termos de tempo e custo.
+
+\item \textbf{Sustentabilidade ambiental:} O uso de papel na impressão e resposta às provas de avaliação resulta num desperdício muito significativo, que tem um impacto negativo no ambiente. A necessidade de encontrar alternativas mais sustentáveis para a realização das provas é um aspeto crítico.
+
+\end{itemize}
+}
+
+\section*{Objetivos do Projeto}
+{\TextoCor
+Para responder a estes desafios, propomos o desenvolvimento de um produto, o Probum, que tenha algumas características diferenciadoras e até inovadoras, que aborda todos estes problemas, relacionados com a realização de provas de avaliação, de forma integrada. O Probum permitirá:
+
+\begin{itemize}
+%----------------------
+\item \textbf{Criação de provas de avaliação digitais:} Criar provas de avaliação personalizadas será simples e fácil e permitirá incorporar questões de diferentes tipos, temas e níveis de dificuldade. Deve ser possível criar questões alternativas, com respostas também diferenciadas, se for conveniente cada Aluno ter uma prova diferente das dos restantes colegas.
+%----------------------
+\item \textbf{Calendarização inteligente das provas:} Utilizando ferramentas matemáticas (e.g., algoritmos de otimização), o Probum poderá gerar automaticamente um calendário para uma dada prova de avaliação, tendo em consideração os espaços disponíveis, o número de Alunos inscritos, e as necessidades específicas de cada unidade curricular ou curso. Se uma dada prova tiver, por exemplo, 96 Alunos inscritos e a sala para a realização dessa prova só tiver capacidade para 20 Alunos, então têm que ser organizadas pelo menos 5 rondas de realização do teste. Este facto pode obrigar a que as provas não sejam iguais para todos os Alunos, como atrás se referiu.  
+%----------------------
+\item \textbf{Realização das provas:} Um Aluno poderá realizar as provas de avaliação de forma digital, através de uma plataforma dedicada, proporcionando assim uma experiência simples, robusta, e flexível. Esta plataforma será disponibilizada em espaços e equipamentos da própria IES, garantindo todos os requisitos exigidos (e.g., autenticidade, confidencialidade, equidade, duração, plágio). Deve ser analisada e explorada a possibilidade de compaginar a realização de provas em computadores da IES com provas realizadas em computadores dos Alunos, desde que se mantenham todas as garantias de confidencialidade e autenticidade.
+%----------------------
+\item \textbf{Correção:} Na fase de correção, todas as questões de resposta fechada serão facilmente avaliadas e pontuadas de forma automática. O Probum deverá poder ser estendido com componentes baseados em técnicas de processamento de linguagem natural, para auxiliar a correção de questões de resposta livre. Se tal funcionalidade não estiver disponível, cabe ao Docente pontuar essas questões abertas.
+%----------------------
+\item \textbf{Sustentabilidade:} A substituição do papel pelo produto contribuirá para a sustentabilidade ambiental. Além disso, evitam-se sobras de papel, i.e., as cópias da prova de avaliação que se tiraram a mais devido ao facto de o número de Alunos que apareceram para a realizar ser menor que o esperado.
+
+Se assumirmos que:
+\begin{itemize}
+  \item um curso (de 3 anos) tem 6 unidades curriculares em cada semestre (ou seja 36 unidades curriculares);
+  \item 90\% das provas de avaliação desse curso podem ser realizadas de forma digital;
+  \item em cada unidade curricular se realizam 3 provas de avaliação, com uma média de 100 Alunos por prova;
+\item cada Aluno consome 4 folhas de papel A4 em cada prova de avaliação em que participa;
+\end{itemize}
+
+então, em cada ano letivo, são poupadas 38.800 folhas de papel por curso, se for usado o produto Probum. Se cada impressão custar 0,05 EUR, então há uma poupança de quase 4.000 EUR (assume-se que cada folha é impressa em ambos os lados). Se uma universidade tiver o equivalente a 100 cursos destes, então a poupança cifra-se em 400.000 EUR anuais. Trata-se de um número bem expressivo que mostra a relevância deste produto. A isto há ainda que acrescentar os ganhos de tempo de correção, aspecto que não pode ser negligenciado e que consome muito do tempo de um professor nos períodos, por vezes longos, em que tem de corrigir provas.
+%----------------------
+\item \textbf{Consulta das provas:} Assim que todas classificações de uma dada prova forem divulgadas, o Docente poderá permitir que cada Aluno consulte a sua prova. Cada prova (que possa ser consultada) ficará disponível, no perfil do respetivo Aluno, para consulta, durante dois anos, altura em que poderá fazer sentido eliminá-la.
+
+\end{itemize}
+}
+
+\hl{NOTA: tenho que validar estes dados com, pelo menos, algum diretor dum departamento universitário.}

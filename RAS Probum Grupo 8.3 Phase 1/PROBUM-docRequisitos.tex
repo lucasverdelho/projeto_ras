@@ -1,0 +1,100 @@
+\documentclass[pdftex,11pt,a4paper]{report}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{fancyvrb}
+\fvset{xleftmargin=2em}
+\usepackage{multicol}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{comment}
+\usepackage{tikzscale}
+\usepackage{pgfplotstable}
+\usepackage{booktabs}
+\usepackage[font=small,labelfont=bf,tableposition=top]{caption}
+\usepackage{framed, tabularx} % para as requirement shells
+\usepackage{graphicx}%
+\newcommand{\authorblock}[1]{\begin{tabular}{@{}c@{}}#1\end{tabular}}
+
+\usepackage[utf8]{inputenc}
+\usepackage[portuges]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage{lmodern}
+\usepackage[obeyspaces,spaces]{url}
+\usepackage[left=25mm,right=25mm,top=25mm,bottom=25mm]{geometry}
+\usepackage{titlesec}
+\usepackage{mathtools}
+\usepackage{hyperref}
+
+% FDias: packages e settings base para podermos usar o tikz para UML
+\usepackage{amsmath}
+\usepackage{tikz-uml}
+\usetikzlibrary{positioning}
+\tikzumlset{fill usecase=white}
+
+% FDias: packages e settings base para podermos dar highlight a texto (para não me esquecer de rever certas partes)
+\usepackage[normalem]{ulem}
+\newcommand\hl{\bgroup\markoverwith
+    {\textcolor{yellow}{\rule[-.5ex]{.1pt}{2.5ex}}}\ULon}
+
+%identa 1º paragrafo de capitulos e secções
+%\usepackage{indentfirst}
+\setlength{\parindent}{0 mm}
+
+\usepackage{eurosym}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\titleformat{\chapter}{\normalfont\huge}{\thechapter.}{20pt}{\huge}
+
+% FDias: define comandos para especificar priorização de requisitos (com cores)
+\newcommand{\prioMust}{\noindent{\color{red}Must}}
+\newcommand{\prioShould}{\noindent{\color{orange}Should}}
+\newcommand{\prioCould}{\noindent{\color{blue}Could}}
+\newcommand{\prioWont}{\noindent{\color{OliveGreen}Won't}}
+
+\newcommand {\TextoCor}    {\color{teal}}
+
+% FDias: define comando para criar tabela de requisitos
+\newcommand{\req}[9]{
+    \begin{table}[H]
+    \begin{framed}
+        \noindent
+        \begin{minipage}{\linewidth}
+            \begin{tabular}{p{0.25\textwidth}p{0.3\textwidth}p{0.45\textwidth}}
+{\TextoCor Requisito \#: #1}   &   {\TextoCor
+Tipo: #2}   &   {\TextoCor
+\textit{Use cases} \#: #3}
+            \end{tabular}
+            
+            \vspace{0.5cm}
+            
+            \begin{tabularx}{\textwidth}{rX}
+                {\TextoCor Descrição}       & {\TextoCor \textbf{#4}} \\
+                {\TextoCor \textit{Rationale}}  & {\TextoCor #5} \\
+                {\TextoCor Origem}      & {\TextoCor #6} \\
+                {\TextoCor \textit{Fit criterion}}  & {\TextoCor #7} \\
+                {\TextoCor Prioridade}             & #8 \\
+            \end{tabularx}
+        \end{minipage}
+    \end{framed}
+    \caption{#9}
+    \end{table}
+}
+
+\begin{document}
+    \input{0a-capa}
+    \input{0b-resumo}
+    %\tableofcontents
+    %\listoffigures
+    %\listoftables
+    \input{1-proposito}
+    \input{2-stakeholders}
+    \input{3-utilizadores}
+    \input{4-restricoes}
+    \input{5-taxinomia}
+    \input{8-ambito}
+    \input{9-requisitosFuncionais}
+    \input{10-requisitosNaoFuncionais}
+    \input{21-levantamentoRequisitos}
+\end{document}

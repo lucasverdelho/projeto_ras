@@ -1,0 +1,135 @@
+\chapter*{8. Âmbito do Produto}
+\section*{Diagrama de \textit{Use Cases}}
+{\TextoCor
+De maneira a compreender melhor o contexto do sistema, vai ser apresentado um diagrama de \textit{Use Cases}. Neste vão ser explicitadas algumas das principais funcionalidades do sistema, bem como os atores do mesmo.
+Neste diagrama é ainda possível identificar a que funcionalidades cada ator do sistema terá acesso.
+}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{umlsystem}[x=6, fill=cyan!20] {Probum}
+            \umlusecase[name=testar_plataforma] {Testar plataforma}
+            
+            % FDias: VER! aqui ainda não tenho a certeza se o registo de alunos deve ser um use case ou não.
+            % Se o registo de alunos for feito à UC, e até puder ser feito pelos Técnicos, ou até pelos Serviços Académicos de forma automática, faz sentido.
+            % Mas se este registo for algo mais ad-hoc, em cada prova, acho que devia passar para o use case de "Criar Prova".
+            % Temos de esclarecer este ponto!
+            \umlusecase[name=registar_alunos, below=0.5cm of testar_plataforma] {\hl{Registar Alunos}}
+            \umlusecase[name=criar_prova, below=0.5cm of registar_alunos] {Criar Prova}
+            \umlusecase[name=iniciar, below=0.5cm of criar_prova] {Iniciar Prova}
+            \umlusecase[name=finalizar, below=0.5cm of iniciar] {Finalizar Prova}
+            \umlusecase[name=classificar, below=0.5cm of finalizar] {Classificar Respostas}
+            \umlusecase[name=responder, below=0.5cm of classificar] {Responder a Prova}
+            \umlusecase[name=consultar_prova, below=0.5cm of responder] {Consultar Prova}
+        \end{umlsystem}
+    
+        \umlactor[y=0, y=-4] {Docente}
+        \umlactor[x=12] {Técnico}
+        \umlactor[x=12, y=-3] {Sistema}
+        \umlactor[x=12, y=-7] {Aluno}
+    
+        \umlassoc{Docente}{criar_prova}
+        \umlassoc{Docente}{registar_alunos}
+        \umlassoc{Docente}{iniciar}
+        \umlassoc{Docente}{finalizar}
+        \umlassoc{Docente}{classificar}
+        \umlassoc{Docente}{testar_plataforma}
+        \umlassoc{Docente}{registar_alunos}
+        
+        \umlassoc{Aluno}{responder}
+        \umlassoc{Aluno}{consultar_prova}
+        
+        \umlassoc{Técnico}{testar_plataforma}
+        \umlassoc{Técnico}{registar_alunos}
+        
+        \umlassoc{Sistema}{classificar}
+        \umlassoc{Sistema}{testar_plataforma}
+        \umlassoc{Sistema}{registar_alunos}
+    \end{tikzpicture}
+    \caption{Diagrama de \textit{Use Cases}}
+\end{figure}
+
+% FDias: temos de encaixar toda a parte de calendarização automática
+
+\newpage
+
+
+\section*{Atores}
+{\TextoCor
+Como está representado no diagrama anterior, o nosso sistema suporta quatro tipos de atores: o \textit{Docente}, o \textit{Técnico}, o \textit{Aluno}, e o \textit{Sistema}. 
+
+O \textit{Docente} é o utilizador central do nosso sistema, pois é ele que vai gerir todo o conteúdo e funcionamento da plataforma.
+
+O \textit{Aluno}, por sua vez, é o utilizador mais crítico e sensível do sistema, dado o contexto em que utilizará a plataforma.
+
+O \textit{Técnico} é o indivíduo que ajudará a instalar, configurar, e manter a plataforma nos servidores e Computadores da IES.
+
+O \textit{Sistema} é uma ou mais peças de \textit{software} cujo propósito é automatizar processos e tarefas, tais como a correção total ou parcial de Respostas.
+}
+
+
+
+\section*{Breve Descrição dos \textit{Use Cases}}
+{\TextoCor
+Esta secção apresenta uma especificação tabelar de cada \textit{use case} considerado, de modo a facilitar o processo de implementação de cada funcionalidade do nosso sistema.
+
+Deste modo, consideramos que é bastante percetível o fluxo sequencial da interação do ator com o sistema.
+
+\newcounter{useCases}
+\setcounter{useCases}{0}
+
+\newcommand{\descCenario}[3]{
+    \begin{tabular}[c]{@{}l@{}}\textbf{#1}\\ {[}#2]\\ (#3){]}\end{tabular}
+}
+}
+
+\subsection*{Criar Prova}
+
+{\TextoCor
+O \textit{use case} "Criar Prova", cujo ator principal é o \textit{Docente}, consiste na criação de uma nova prova de avaliação.
+Esta criação implica a introdução de detalhes básicos acerca da prova (e.g., local, date e hora, duração), mas também contempla o registo de alunos e a criação de questões.
+
+Existe um cenário de exceção quando o sistema não consegue interpretar o ficheiro submetido pelo Docente. Nesse caso são devolvidos os detalhes do erro, para que o ficheiro possa ser retificado e posteriormente ressubmetido.
+}
+
+\begin{table}[H]
+    \begin{center}
+        \scalebox{0.85}{
+            \begin{tabular}{|l|l|}
+                \hline
+                \textbf{\textit{Use case}} & \stepcounter{useCases}\theuseCases \\ \hline
+                \textbf{Ator principal} & Docente \\ \hline
+                \textbf{Ator secundário} & - \\ \hline
+                \textbf{Pré-Condições} & O Docente está autenticado na plataforma \\ \hline
+                \textbf{Pós-Condições} & A Prova está criada no sistema, e conta com \hl{Alunos} e Questões registadas \\ \hline
+                \textbf{Cenário Normal} & \begin{tabularx}{13cm}{X|X}
+                    \textbf{Input do Ator} & \textbf{Resposta do Sistema} \\ \hline
+                    1 - O Docente fornece data, \hl{hora}, sala e outros detalhes & \\
+
+                    % FDias: Ver questão da inscrição dos alunos e uniformizar! (comentário na figura dos Diagramas de Use Cases)
+                    % FDias: também a parte de calendarização automática
+                    & 2 - O sistema cria a Prova com todos os detalhes, mas ainda incompleta (e.g., sem Questões \hl{e Alunos}) \\
+                    3 - O Docente submete um ficheiro com a informação dos Alunos a registar na Prova & \\
+                    & 4 - O Sistema valida o ficheiro submetido \\
+                    & 5 - O Sistema associa os Alunos à Prova \\
+                    6 - O Docente cria uma Questão, selecionando o seu tipo e a sua descrição & \\
+                    7 - O Docente define restrições às Respostas (e.g., escolha múltipla, V/F, resposta aberta) & \\
+                    8 - O Docente define os Critérios de Avaliação da Questão & \\
+                    & 9 - O Sistema cria a Questão \\
+                    10 - O Docente volta ao passo 6 &  \\
+                \end{tabularx} \\ \hline
+                
+                \descCenario{Exceção 1}{formato inválido}{Passo 4} & \begin{tabularx}{13cm}{X|X}
+                    & 4.1 - O Sistema informa o Docente que o ficheiro não é valido, e dá informação suficiente para que o problema seja corrigido\\
+                \end{tabularx} \\ \hline
+
+                \descCenario{Alternativa 1}{terminado}{Passo 10} & \begin{tabularx}{13cm}{X|X}
+                    10 - O Docente dá por terminada a criação da Prova & \\
+                \end{tabularx} \\ \hline
+            \end{tabular}
+        }
+        \caption{Especificação do \textit{use case} "Criar Prova"}
+    \end{center}
+\end{table}
+
+\subsection*{...}

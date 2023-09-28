@@ -1,0 +1,115 @@
+\chapter*{9. Requisitos Funcionais}
+
+
+\section*{Modelação de Requisitos}
+{\TextoCor
+Para o levantamento de requisitos foi utilizada a \textit{requirement shell} do modelo \textit{Volere} como forma de representação, para os descrever concisamente.
+}
+
+\req
+    {12} % ID requisito
+    {Funcional} % tipo de requisito
+    {1, 7, 20} % use cases
+    {O produto deve registar todas as estradas que foram repavimentadas} % descricao
+    {Para permitir agendar o reparo de estradas não repavimentadas e identificar potenciais perigos} % rational
+    {Equipa} % origem
+    {O registo das estradas repavimentadas deve seguir a especificação da IP e ser feito até 30 minutos após concluída a repavimentação da estrada} % fit criterion
+    {\prioMust} % prioridade
+    {Exemplo de especificação de um requisito} % caption
+
+
+{\TextoCor
+Como caracterização da tabela de representação de requisitos, é necessário descrever os campos:
+\begin{itemize}
+    \item \textbf{Requisito:} número de identificação do requisito.
+    \item \textbf{Tipo:} tipo de requisito, considerando o modelo de \textit{Volere}.
+    \item \textbf{\textit{Use Cases}:} número dos Use Cases associados.
+    \item \textbf{Descrição:} descrição clara e concisa do requisito.
+    \item \textbf{\textit{Rationale}:} razão para a existência do requisito.
+    \item \textbf{Origem:} quem originou o requisito.
+    \item \textbf{\textit{Fit criterion}:} critério para validar cumprimento do requisito.
+    \item \textbf{Prioridade:} índice de prioridade para a implementação do requisito:
+    \begin{itemize}
+        \item \prioMust: requisito obrigatório;
+        \item \prioShould: requisitos que deve ser implementados;
+        \item \prioCould: requisito que não é necessário, mas é desejado;
+        \item \prioWont: requisito que pode ser considerado posteriormente.
+    \end{itemize}
+    \item \textbf{Data:} data da especificação do requisito.
+\end{itemize}
+}
+
+\section*{Requisitos Funcionais}
+
+{\TextoCor
+
+\req
+    {Req1} % ID requisito
+    {Funcional} % tipo de requisito
+    {1} % use cases
+    {O Docente cria uma prova de avaliação} % descricao
+    {Para permitir associar questões que serão respondidas pelos alunos e, posteriormente, classificadas} % rational
+    {Cliente} % origem
+    {A criação de uma prova implica introduzir toda a informação necessária à sua realização e inequívoca identificação} % fit criterion
+    {\prioMust} % prioridade
+    {Requisito funcional quanto à criação de uma prova de avaliação} % caption
+
+% FDias: Ver questão da inscrição dos alunos e uniformizar! (comentário na figura dos Diagramas de Use Cases)
+\req
+    {Req2} % ID requisito
+    {Funcional} % tipo de requisito
+    {1} % use cases
+    {\hl{O Técnico regista Alunos numa prova de avaliação}} % descricao
+    {Para permitir definir que Alunos poderão participar na prova, associando-lhes também um método de autenticação. Em alternativa, o Docente também deve poder registar alunos, que não estejam, por alguma razão, ainda inscritos.} % rational
+    {Cliente} % origem
+    {O processo de registo de alunos deve permitir definir que alunos podem participar na prova, e garantir que cada um deles pode ser autenticado pela plataforma aquando da sua realização} % fit criterion
+    {\prioMust} % prioridade
+    {Requisito funcional quanto ao registo de alunos numa prova de avaliação} % caption
+
+\req
+    {Req3} % ID requisito
+    {Funcional} % tipo de requisito
+    {1} % use cases
+    {O Docente adiciona Questões de escolha múltipla a uma prova de avaliação} % descricao
+    {Para permitir avaliar o conhecimento dos Alunos numa dada temática, facultando um conjunto de possíveis respostas, onde apenas uma é a correta} % rational
+    {Cliente} % origem
+    {As Provas de avaliação podem ser compostas por Questões de escolha múltipla} % fit criterion
+    {\prioMust} % prioridade
+    {Requisito funcional quanto à possibilidade de criar Questões de escolha múltipla} % caption
+
+\req
+    {Req4} % ID requisito
+    {Funcional} % tipo de requisito
+    {\hl{...}} % use cases
+    {O Docente define o momento a partir do qual as provas podem ser consultadas} % descricao
+    {Para permitir ao Docente disponibilizar as respostas dadas por cada Aluno, assim como as respetivas classificações} % rational
+    {Cliente} % origem
+    {As Provas de avaliação apenas podem ser consultadas após o momento definido pelo Docente} % fit criterion
+    {\prioShould} % prioridade
+    {Requisito funcional quanto à possibilidade de disponibilizar Provas de avaliação para consulta} % caption
+}
+
+% \req
+%     {5} % ID requisito
+%     {Funcional} % tipo de requisito
+%     {\hl{...}} % use cases
+%     {O produto deve permitir definir o momento a partir do qual as provas podem ser consultadas} % descricao
+%     {Para permitir ao docente disponibilizar as respostas dadas por cada aluno, assim como as respetivas classificações} % rational
+%     {Cliente} % origem
+%     {As provas de avaliação apenas podem ser consultadas após o momento definido pelo docente} % fit criterion
+%     {\prioShould} % prioridade
+%     {Requisito funcional quanto à possibilidade de disponibilizar provas para consulta} % caption
+
+% FDias: algumas ideias
+% - Alunos poderem ter acesso (ou até receber) um PDF com as suas respostas / classificações
+% - Prof. poder usar bold, itálico, tamanhos de texto diferentes, etc. nas provas
+% - Prof. poder associar regras em regex para validar input dos alunos (se a resposta tiver de ser um número, validar que é efetivamente um número logo no UI qd o aluno está a escrever)
+% - Prof. poder editar a prova enquanto ela está a decorrer (algum erro que seja detetado). Não podemos é afetar as respostas já dadas: imutabilidade / versões (?)
+% - O UI dos Alunos poder mostrar um cronómetro (configurável pelo aluno [?])
+% - Prof. poder dar indicação, junto da questão, o tempo esperado para a resposta àquela questão. Depois apresentar isso ao aluno (tb configurável) (?)
+% - Prof. poder adicionar multimedia às questões
+% - 
+% - ...
+% Nota: temos de fazer algumas entrevistas com Profs. e Alunos para percebermos as necessidades.
+
+...
